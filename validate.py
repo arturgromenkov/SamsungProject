@@ -13,8 +13,8 @@ def display_cm(y_true,y_pred):
     cm_display.plot()
     plt.show()
 
-model = CHistNet.load_from_checkpoint(checkpoint_path="lightning_logs/version_10/checkpoints/model_main_epoch=04.ckpt",
-                                      hparams_file="lightning_logs/version_10/hparams.yaml")
+model = CHistNet.load_from_checkpoint(checkpoint_path="lightning_logs/version_2/checkpoints/model_main_epoch=09.ckpt",
+                                      hparams_file="lightning_logs/version_2/hparams.yaml")
 model.eval()
 
 test_dataset = ImageFolder(root="tcga_coad_msi_mss/test", transform=transforms.ToTensor())

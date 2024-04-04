@@ -11,14 +11,14 @@ from tqdm import tqdm
 import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix,ConfusionMatrixDisplay
 
-trainer = Trainer(max_epochs=1,
+trainer = Trainer(max_epochs=10,
                   accelerator='cuda',
                  gradient_clip_val=0.5,
                   precision='16-mixed',
                   callbacks=[checkpoint_callback(every_n_epochs=1)]
                   )
 model = CHistNet()
-data_module = HistologyDataModule()
+data_module = HistologyDataModule(batch_size=1024)
 trainer.fit(model,data_module)
 
 model.eval()
